@@ -50,3 +50,6 @@ def breakpointsFB(archivo:str,breakpoints:int,m1:int,m2:int)->list[tuple[float,f
   #optima inicia como vacía y se llenará con la mejor de todas las soluciones, a medida que las vaya encontrando
   #error arranca siendo muy alto para poder ir comparando
     return breakpointsAuxFB(archivo,breakpoints,-1,-1,grilla_x,grilla_y,(puntosEnX,puntosEnY),[],[],error)
+
+
+
