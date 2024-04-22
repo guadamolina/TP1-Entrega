@@ -49,15 +49,15 @@ def error(BP_inicial:tuple[float,float], BP_final:tuple[float,float] , Puntos:tu
 def errorSolucion(solucion:list[tuple[float,float]],Puntos:tuple[List[float],List[float]])->float:
    i:int=0
    errorTotal:float=0
-  #Si la solucion no tiene breakpoints, el error total es 0
+  #Si la solucion no tiene breakpoints, el error total es inf
    if(len(solucion) == 0):
-      errorTotal = 10e10 #antes de entregar revisar si este cambio no mata algo
+      errorTotal = 10e10
      
   #si la solucion tiene solo un punto, el error es el valor absoluto entre el punto calculado por la solucion y el punto pasado por parámetro.
    elif(len(solucion) == 1): 
        errorTotal+=abs(Puntos[1][0] - solucion[0][1])
      
-  #calcula los errores de a pares
+ 
    else:
     errorTotal+=Puntos[1][0] - solucion[0][1] #calcula el error del primer punto
     while(i<len(solucion)-1): #calcula los errores de a pares
