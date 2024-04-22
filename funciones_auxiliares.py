@@ -59,7 +59,8 @@ def errorSolucion(solucion:list[tuple[float,float]],Puntos:tuple[List[float],Lis
      
   #calcula los errores de a pares
    else:
-    while(i<len(solucion)-1):
+     errorTotal+=Puntos[1][0] - solucion[0][1] #calcula el error del primer punto
+    while(i<len(solucion)-1): #calcula los errores de a pares
         errorTotal+=error(solucion[i],solucion[i+1],Puntos)
         i+=1
    return errorTotal
