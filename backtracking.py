@@ -1,7 +1,7 @@
 from funciones_auxiliares import *
 
 def breakpointsAuxBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float):
-   lo
+   
    error_parcial = errorSolucion(solucion,npuntos) #calcula el error de la solucion calculada hasta el momento
 
    #Poda para ver si no contiene a la grilla_x[0] en la solución luego de la primera iteracion
@@ -59,3 +59,5 @@ def breakpointsBT(archivo:str,breakpoints:int,m1:int,m2:int):
   #optima inicia como vacía y se llenará con la mejor de todas las soluciones, a medida que las vaya encontrando
   #error arranca siendo muy alto para poder ir comparando
     return breakpointsAuxBT(archivo,breakpoints,-1,-1,grilla_x,grilla_y,(puntosEnX,puntosEnY),[],[],error)
+
+
