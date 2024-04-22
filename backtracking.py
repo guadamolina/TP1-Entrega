@@ -1,7 +1,7 @@
 from funciones_auxiliares import *
 
-def breakpointshackerBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float)->float,list[tuple[float,float]]:
-   
+def breakpointsAuxBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float):
+   lo
    error_parcial = errorSolucion(solucion,npuntos) #calcula el error de la solucion calculada hasta el momento
 
    #Poda para ver si no contiene a la grilla_x[0] en la solución luego de la primera iteracion
@@ -40,9 +40,9 @@ def breakpointshackerBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_
   #paso recursivo
    for j in range(0,len(grilla_y)+1): #el +1 es para que pueda tomar como breakpoint todas las opciones disponibles en la grilla Y, y además una opción extra que es no tomar ninguno
        if j==len(grilla_y): #no tomo el punto como breakpoint
-            errorMinimo,optima=breakpointshackerBT(archivo,breakpoints,x+1,j,grilla_x,grilla_y,npuntos,solucion,optima,errorMinimo)
+            errorMinimo,optima=breakpointsAuxBT(archivo,breakpoints,x+1,j,grilla_x,grilla_y,npuntos,solucion,optima,errorMinimo)
        else: #tomo el punto como breakpoint
-        errorMinimo,optima=breakpointshackerBT(archivo,breakpoints-1,x+1,j,grilla_x,grilla_y,npuntos,solucion+[(grilla_x[x],grilla_y[j])],optima,errorMinimo)
+        errorMinimo,optima=breakpointsAuxBT(archivo,breakpoints-1,x+1,j,grilla_x,grilla_y,npuntos,solucion+[(grilla_x[x],grilla_y[j])],optima,errorMinimo)
     
    return errorMinimo,optima
 
@@ -58,4 +58,4 @@ def breakpointsBT(archivo:str,breakpoints:int,m1:int,m2:int):
   #solucion empieza como una lista vacia para poder ir rellenándola con todos los breakpoints posibles
   #optima inicia como vacía y se llenará con la mejor de todas las soluciones, a medida que las vaya encontrando
   #error arranca siendo muy alto para poder ir comparando
-    return breakpointshackerBT(archivo,breakpoints,-1,-1,grilla_x,grilla_y,(puntosEnX,puntosEnY),[],[],error)
+    return breakpointsAuxBT(archivo,breakpoints,-1,-1,grilla_x,grilla_y,(puntosEnX,puntosEnY),[],[],error)
