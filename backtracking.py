@@ -1,8 +1,6 @@
 from funciones_auxiliares import *
 
 def breakpointsAuxBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float):
-   lo
-   error_parcial = errorSolucion(solucion,npuntos) #calcula el error de la solucion calculada hasta el momento
 
    #Poda para ver si no contiene a la grilla_x[0] en la solución luego de la primera iteracion
    #Poda por factibilidad
@@ -11,6 +9,7 @@ def breakpointsAuxBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,n
    
    #si tengo una solucion factible y con la cantidad de breakpoints adecuada, se fija si tiene menor error que la ultima calculada como óptima. Si es mejor, optima se actualiza.
    elif (breakpoints==0 and x==len(grilla_x)):
+        error_parcial:float = errorSolucion(solucion,npuntos)
         if (error_parcial<errorMinimo):
             optima=solucion.copy()
             errorMinimo=error_parcial
@@ -18,14 +17,14 @@ def breakpointsAuxBT(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,n
     
    #Si el error de la solucion sin terminar es mayor que el de la optima, no sigue completando esa solución.
    #Poda por optimalidad
-   elif(error_parcial>errorMinimo):
+   elif(errorSolucion(solucion,npuntos)>errorMinimo):
       return errorMinimo, optima
     
     #Si tengo mas breakpoints que poner que puntos disponibles en X, no sigo completando la solucion ya que desembocará en una no factible
    #Poda por factibilidad
    elif(breakpoints > len(grilla_x)-x ):
       return errorMinimo, optima
-    
+   
    #Este if es para que no repita puntos de x
    elif x<len(grilla_x)and grilla_x[x] in lista_x(solucion):
        return errorMinimo, optima
