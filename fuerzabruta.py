@@ -1,6 +1,6 @@
 from funciones_auxiliares import *
 
-def breakpointAuxFB(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float):
+def breakpointsAuxFB(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,npuntos,solucion:list[tuple[float,float]],optima:list[tuple[float,float]],errorMinimo:float):
    
 #si no contiene a la posicion 0 de la grilla x en la solucion, no es una solución factible por lo que ni se fija si esa es mejor que óptima
    if breakpoints==0 and x==len(grilla_x) and (grilla_x[0] not in lista_x(solucion)):
