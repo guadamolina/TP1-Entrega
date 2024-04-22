@@ -26,7 +26,7 @@ def breakpointAuxFB(archivo:str,breakpoints:int,x:int,y:int,grilla_x,grilla_y,np
        return errorMinimo, optima
 
   #paso recursivo
-   for j in range(0,len(grilla_y)+1):
+   for j in range(0,len(grilla_y)+1): #el +1 es para que pueda tomar como breakpoint todas las opciones disponibles en la grilla Y, y además una opción extra que es no tomar ninguno
 
        
        if j==len(grilla_y): #caso que no toma el punto como breakpoint
