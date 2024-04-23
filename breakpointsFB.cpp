@@ -1,7 +1,7 @@
 #include "funcionesAuxiliares.cpp"
 
 tuple<float, vector<tuple<float, float>>>
-breakpointshackerFB(int breakpoints, float x, float y, vector<float> grilla_x,
+breakpointsAuxFB(int breakpoints, float x, float y, vector<float> grilla_x,
                     vector<float> grilla_y,
                     tuple<vector<float>, vector<float>> npuntos,
                     vector<tuple<float, float>> posible,
@@ -30,13 +30,13 @@ breakpointshackerFB(int breakpoints, float x, float y, vector<float> grilla_x,
   tuple<float, vector<tuple<float, float>>> res = {};
   for (int j = 0; j <= grilla_y.size(); j++) {
     if (j == grilla_y.size()) {
-      res = breakpointshackerFB(breakpoints, x + 1, j, grilla_x, grilla_y,
+      res = breakpointsAuxFB(breakpoints, x + 1, j, grilla_x, grilla_y,
                                 npuntos, posible, sol, error_sol);
       error_sol = get<0>(res);
       sol = get<1>(res);
     } else {
       posible.push_back(make_tuple(grilla_x[x], grilla_y[j]));
-      res = breakpointshackerFB(breakpoints - 1, x + 1, j, grilla_x, grilla_y,
+      res = breakpointsAuxFB(breakpoints - 1, x + 1, j, grilla_x, grilla_y,
                                 npuntos, posible, sol, error_sol);
       error_sol = get<0>(res);
       sol = get<1>(res);
@@ -55,7 +55,7 @@ breakpointsFB(string archivo, int breakpoints, int m1, int m2) {
   vector<float> grilla_y = get<1>(armar_grilla(puntosEnX, puntosEnY, m1, m2));
   tuple<vector<float>, vector<float>> mis_puntos = {puntosEnX, puntosEnY};
 
-  return breakpointshackerFB(breakpoints, 0, 0, grilla_x, grilla_y, mis_puntos,
+  return breakpointsAuxFB(breakpoints, 0, 0, grilla_x, grilla_y, mis_puntos,
                              {}, {}, 1e10);
 }
 
